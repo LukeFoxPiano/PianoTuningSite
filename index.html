@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luke Fox Piano Tuning & Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #fafaf8;
+    --gray-50: #f5f4f0;
+    --gray-200: #e0ddd6;
+    --gray-400: #a09d96;
+    --gray-600: #6b6860;
+    --accent: #2a4a3e;
+    --accent-light: #e8eeec;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --max: 1100px;
+    --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; letter-spacing: 0.01em; color: var(--black); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-size: 0.875rem; font-weight: 300; color: var(--gray-600); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--black); }
+  .nav-cta {
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.6rem 1.4rem; border: 1px solid var(--black);
+    color: var(--black); text-decoration: none; cursor: pointer; background: transparent;
+    transition: background 0.2s var(--ease), color 0.2s;
+  }
+  .nav-cta:hover { background: var(--black); color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 2.5rem 5rem;
+    background: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+    background: var(--gray-50);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; width: 100%; }
+  .hero-eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300;
+    line-height: 1.05; letter-spacing: -0.01em; color: var(--black);
+    max-width: 10ch; margin-bottom: 2rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-desc { font-size: 1.0625rem; font-weight: 300; color: var(--gray-600); max-width: 42ch; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 1rem 2.25rem; background: var(--black); color: var(--white);
+    border: 1px solid var(--black); cursor: pointer; text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-ghost {
+    font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em;
+    color: var(--gray-600); text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--black); }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--gray-200); }
+  .stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--black); line-height: 1; }
+  .stat-label { font-size: 0.8125rem; font-weight: 300; color: var(--gray-400); margin-top: 0.25rem; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 2.5rem; }
+  .container { max-width: var(--max); margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+    line-height: 1.15; color: var(--black); margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--gray-50); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0; margin-top: 4rem; border: 1px solid var(--gray-200); }
+  .service-card {
+    padding: 2.5rem; border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--white); }
+  .service-num { font-family: var(--serif); font-size: 0.875rem; color: var(--gray-400); margin-bottom: 1.5rem; }
+  .service-name { font-family: var(--serif); font-size: 1.375rem; font-weight: 400; margin-bottom: 0.75rem; }
+  .service-desc { font-size: 0.9375rem; font-weight: 300; color: var(--gray-600); line-height: 1.7; }
+  .service-price { margin-top: 1.5rem; font-size: 0.875rem; font-weight: 500; color: var(--accent); }
+
+  /* ── PROCESS ── */
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-top: 4rem; }
+  .step-line { width: 2rem; height: 1px; background: var(--accent); margin-bottom: 1.25rem; }
+  .step-num { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gray-400); margin-bottom: 0.75rem; }
+  .step-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.9rem; font-weight: 300; color: var(--gray-600); line-height: 1.7; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--accent); color: var(--white); }
+  #testimonials .section-label { color: rgba(255,255,255,0.5); }
+  #testimonials .section-title { color: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 4rem; background: rgba(255,255,255,0.15); }
+  .testimonial-card { padding: 2.5rem; background: var(--accent); }
+  .testimonial-quote { font-family: var(--serif); font-size: 1.2rem; font-weight: 300; font-style: italic; line-height: 1.65; margin-bottom: 1.5rem; color: rgba(255,255,255,0.9); }
+  .testimonial-author { font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.05em; color: rgba(255,255,255,0.55); }
+
+  /* ── CTA BAND ── */
+  .cta-band { background: var(--black); color: var(--white); padding: 5rem 2.5rem; text-align: center; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; }
+  .cta-band p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; }
+  .btn-white {
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 1rem 2.5rem; background: var(--white); color: var(--black);
+    border: none; cursor: pointer; transition: background 0.2s, color 0.2s;
+  }
+  .btn-white:hover { background: var(--accent-light); }
+
+  /* ── FOOTER ── */
+  footer { padding: 3rem 2.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; gap: 1rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--black); }
+  .footer-copy { font-size: 0.8125rem; color: var(--gray-400); font-weight: 300; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.8125rem; color: var(--gray-400); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--black); }
+
+  /* ── MODAL OVERLAY ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(14,14,14,0.6);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s var(--ease);
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--white); width: 100%; max-width: 580px;
+    max-height: 90vh; overflow-y: auto;
+    transform: translateY(20px); transition: transform 0.3s var(--ease);
+  }
+  .modal-overlay.active .modal { transform: translateY(0); }
+
+  .modal-header {
+    padding: 2rem 2rem 1.25rem; border-bottom: 1px solid var(--gray-200);
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .modal-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; }
+  .modal-subtitle { font-size: 0.875rem; color: var(--gray-400); font-weight: 300; margin-top: 0.25rem; }
+  .modal-close {
+    background: none; border: none; cursor: pointer; font-size: 1.25rem; color: var(--gray-400);
+    width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s; flex-shrink: 0; margin-top: -0.25rem;
+  }
+  .modal-close:hover { color: var(--black); }
+
+  .modal-body { padding: 2rem; }
+
+  /* progress */
+  .progress-bar { display: flex; gap: 0.4rem; margin-bottom: 2rem; }
+  .progress-step {
+    height: 2px; flex: 1;
+    background: var(--gray-200); transition: background 0.3s;
+  }
+  .progress-step.done { background: var(--accent); }
+  .progress-step.active { background: var(--black); }
+
+  /* form */
+  .form-group { margin-bottom: 1.5rem; }
+  .form-label { display: block; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.03em; color: var(--black); margin-bottom: 0.5rem; }
+  .form-hint { font-size: 0.8rem; color: var(--gray-400); font-weight: 300; margin-bottom: 0.5rem; }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1px solid var(--gray-200); background: var(--white);
+    font-family: var(--sans); font-size: 0.9375rem; font-weight: 300; color: var(--black);
+    transition: border-color 0.2s; outline: none; appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--black); }
+  .form-textarea { resize: vertical; min-height: 80px; }
+  .form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a09d96' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+
+  .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .radio-option { display: flex; align-items: center; gap: 0.6rem; }
+  .radio-option input { width: 1rem; height: 1rem; accent-color: var(--accent); }
+  .radio-option label { font-size: 0.9rem; font-weight: 300; cursor: pointer; }
+
+  .checkbox-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .checkbox-option { display: flex; align-items: center; gap: 0.6rem; }
+  .checkbox-option input { width: 1rem; height: 1rem; accent-color: var(--accent); }
+  .checkbox-option label { font-size: 0.9rem; font-weight: 300; cursor: pointer; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .modal-footer {
+    padding: 1.25rem 2rem; border-top: 1px solid var(--gray-200);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .btn-back {
+    background: none; border: none; cursor: pointer; font-size: 0.875rem; font-weight: 300; color: var(--gray-400);
+    font-family: var(--sans); transition: color 0.2s;
+  }
+  .btn-back:hover { color: var(--black); }
+  .btn-next {
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.75rem 2rem; background: var(--black); color: var(--white);
+    border: 1px solid var(--black); cursor: pointer; font-family: var(--sans);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-next:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-next:disabled { background: var(--gray-200); border-color: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
+
+  /* step 3 — calendly embed */
+  .calendly-container { text-align: center; padding: 1rem 0; }
+  .calendly-placeholder {
+    border: 1px dashed var(--gray-200); padding: 3rem 2rem;
+    background: var(--gray-50);
+  }
+  .calendly-placeholder p { font-size: 0.9375rem; color: var(--gray-600); font-weight: 300; line-height: 1.7; }
+  .calendly-placeholder strong { color: var(--black); font-weight: 500; }
+  .calendly-link {
+    display: inline-block; margin-top: 1.5rem;
+    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.75rem 2rem; background: var(--accent); color: var(--white);
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .calendly-link:hover { opacity: 0.85; }
+
+  /* step 4 — reminder email opt-in */
+  .reminder-card {
+    border: 1px solid var(--gray-200); padding: 1.75rem; background: var(--accent-light);
+    margin-bottom: 1.5rem;
+  }
+  .reminder-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .reminder-card h3 { font-family: var(--serif); font-size: 1.125rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .reminder-card p { font-size: 0.875rem; font-weight: 300; color: var(--gray-600); line-height: 1.65; }
+  .reminder-toggle { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--gray-200); }
+  .toggle-label { font-size: 0.875rem; font-weight: 400; }
+  .toggle-switch {
+    width: 44px; height: 24px; background: var(--gray-200); border-radius: 12px;
+    position: relative; cursor: pointer; transition: background 0.2s;
+  }
+  .toggle-switch.on { background: var(--accent); }
+  .toggle-knob {
+    position: absolute; top: 3px; left: 3px; width: 18px; height: 18px;
+    background: white; border-radius: 50%;
+    transition: transform 0.2s var(--ease);
+  }
+  .toggle-switch.on .toggle-knob { transform: translateX(20px); }
+
+  /* confirmation */
+  .confirmation { text-align: center; padding: 2rem 0; }
+  .confirm-icon { width: 4rem; height: 4rem; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+  .confirm-icon svg { width: 1.5rem; height: 1.5rem; stroke: var(--accent); fill: none; }
+  .confirm-title { font-family: var(--serif); font-size: 1.75rem; font-weight: 300; margin-bottom: 0.75rem; }
+  .confirm-text { font-size: 0.9375rem; font-weight: 300; color: var(--gray-600); line-height: 1.7; max-width: 36ch; margin: 0 auto; }
+  .confirm-details { margin-top: 2rem; padding: 1.25rem; border: 1px solid var(--gray-200); text-align: left; }
+  .confirm-row { display: flex; justify-content: space-between; font-size: 0.875rem; padding: 0.4rem 0; border-bottom: 1px solid var(--gray-200); }
+  .confirm-row:last-child { border-bottom: none; }
+  .confirm-row span:first-child { font-weight: 300; color: var(--gray-600); }
+  .confirm-row span:last-child { font-weight: 400; }
+
+  /* error */
+  .field-error { font-size: 0.8rem; color: #c0392b; margin-top: 0.35rem; }
+  .form-input.error, .form-select.error { border-color: #c0392b; }
+
+  /* step indicator text */
+  .step-meta { font-size: 0.8rem; font-weight: 300; color: var(--gray-400); }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">Luke Fox 🎹</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <!--    <a href="#testimonials">Reviews</a>-->
+    <button class="nav-cta" onclick="openModal()">Book Now</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Fort Collins & Northern Colorado</p>
+    <h1>Piano <em>Tuning</em> &amp; Repair</h1>
+    <p class="hero-desc">Precision tuning, voicing, and restoration by a certified technician with 20 years of experience. Every piano deserves to be heard at its finest.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openModal()">Book an Appointment</button>
+      <a class="btn-ghost" href="#services">View Services →</a>
+    </div>
+    <!--<div class="hero-stats">
+      <div>
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div>
+        <div class="stat-num">1,400+</div>
+        <div class="stat-label">Pianos serviced</div>
+      </div>
+      <div>
+        <div class="stat-num">★ 5.0</div>
+        <div class="stat-label">Average rating</div>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What I Offer</p>
+    <h2 class="section-title">Services &amp; <em>Pricing</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">Standard Tuning</div>
+        <p class="service-desc">Equal temperament tuning using electronic and aural methods. Ideal for pianos tuned within the last 12 months.</p>
+        <div class="service-price">From $120</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">Pitch Raise</div>
+        <p class="service-desc">For pianos more than a half-step flat. Two-pass process to bring string tension up safely before fine tuning.</p>
+        <div class="service-price">From $180</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">Voicing</div>
+        <p class="service-desc">Adjusting hammer felt density to shape tone — softer, mellower or brighter and more projected, to match your preference.</p>
+        <div class="service-price">From $95</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-name">Regulation</div>
+        <p class="service-desc">Full action regulation restoring precise key weight, repetition, and let-off for even, responsive touch across all 88 keys.</p>
+        <div class="service-price">From $350</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-name">Repair</div>
+        <p class="service-desc">Broken strings, sticky keys, pedal repair, key covering replacement, pin tightening, and structural work.</p>
+        <div class="service-price">Quote on inspection</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-name">Inspection Report</div>
+        <p class="service-desc">Full written assessment of your piano's condition — ideal for purchases, insurance, or estate situations.</p>
+        <div class="service-price">From $85</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Simple <em>Booking</em> Process</h2>
+    <div class="process-steps">
+      <div>
+        <div class="step-line"></div>
+        <div class="step-num">Step 01</div>
+        <div class="step-title">Tell Me About Your Piano</div>
+        <p class="step-desc">Answer a few quick questions about your piano's age, type, and history so I arrive fully prepared.</p>
+      </div>
+      <div>
+        <div class="step-line"></div>
+        <div class="step-num">Step 02</div>
+        <div class="step-title">Choose a Time</div>
+        <p class="step-desc">Pick from available slots on my live calendar. Appointments are typically available within 1–2 weeks.</p>
+      </div>
+      <div>
+        <div class="step-line"></div>
+        <div class="step-num">Step 03</div>
+        <div class="step-title">Get a Reminder</div>
+        <p class="step-desc">Opt in to a 6-month email reminder — pianos sound best when tuned twice a year, and I'll keep track for you.</p>
+      </div>
+      <div>
+        <div class="step-line"></div>
+        <div class="step-num">Step 04</div>
+        <div class="step-title">I Come to You</div>
+        <p class="step-desc">I travel to your home or venue anywhere in Fort Collins and surrounding areas — no hauling required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<!--
+<section id="testimonials">
+  <div class="container">
+    <p class="section-label">Client Reviews</p>
+    <h2 class="section-title">What People <em>Say</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"Our Steinway hadn't been touched in four years. Luke transformed it — rich, balanced, utterly musical. He explained every step and clearly loves what he does."</p>
+        <div class="testimonial-author">Margaret T. — Fort Collins</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"Booked online in two minutes. Luke showed up on time, was efficient and thorough, and our upright sounds better than the day we bought it."</p>
+        <div class="testimonial-author">David & Claire R. — Loveland</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"I appreciated the 6-month reminder — it's easy to let tuning slide. Now it's part of our routine. Highly recommend Luke to anyone serious about their instrument."</p>
+        <div class="testimonial-author">Sarah K. — Windsor</div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <h2>Ready to hear your piano at its best?</h2>
+  <p>Book online in minutes. No phone calls required.</p>
+  <button class="btn-white" onclick="openModal()">Schedule an Appointment</button>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Luke Fox Piano Tuning & Repair</div>
+  <div class="footer-copy">© 2026 Luke Fox. Dacono, Colorado.</div>
+  <div class="footer-links">
+    <a href="mailto:luke@lukefox.dev">luke@lukefox.dev</a>
+    <a href="tel:+15104785493">(510) 478-5493</a>
+  </div>
+</footer>
+
+<!-- ── BOOKING MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">About Your Piano</div>
+        <div class="modal-subtitle" id="modalSubtitle">Step 1 of 3 — Piano details</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-body" id="modalBody">
+      <!-- Steps injected by JS -->
+    </div>
+
+    <div class="modal-footer" id="modalFooter">
+      <button class="btn-back" id="btnBack" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="btnNext" onclick="nextStep()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STEPS = 3;
+let currentStep = 1;
+let reminderOn = true;
+let formData = {};
+
+const overlayEl = document.getElementById('modalOverlay');
+const bodyEl = document.getElementById('modalBody');
+const titleEl = document.getElementById('modalTitle');
+const subtitleEl = document.getElementById('modalSubtitle');
+const nextBtn = document.getElementById('btnNext');
+const backBtn = document.getElementById('btnBack');
+const footerEl = document.getElementById('modalFooter');
+
+function openModal() {
+  currentStep = 1;
+  formData = {};
+  overlayEl.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  renderStep();
+}
+function closeModal() {
+  overlayEl.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === overlayEl) closeModal();
+}
+
+function renderProgress() {
+  let html = '<div class="progress-bar">';
+  for (let i = 1; i <= STEPS; i++) {
+    let cls = i < currentStep ? 'done' : i === currentStep ? 'active' : '';
+    html += `<div class="progress-step ${cls}"></div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderStep() {
+  const steps = {
+    1: renderStep1,
+    2: renderStep2,
+    3: renderStep3,
+  };
+
+  bodyEl.innerHTML = renderProgress() + steps[currentStep]();
+
+  const titles = {
+    1: ['About Your Piano', 'Step 1 of 3 — Piano details'],
+    2: ['Your Contact Info', 'Step 2 of 3 — Contact & service'],
+    3: ['Choose a Time', 'Step 3 of 3 — Scheduling'],
+  };
+
+  titleEl.textContent = titles[currentStep][0];
+  subtitleEl.textContent = titles[currentStep][1];
+
+  if (currentStep === 1) {
+    backBtn.style.visibility = 'hidden';
+  } else {
+    backBtn.style.visibility = 'visible';
+  }
+
+  if (currentStep === STEPS) {
+    footerEl.style.display = 'none';
+  } else {
+    footerEl.style.display = 'flex';
+    nextBtn.textContent = currentStep === STEPS - 1 ? 'Continue to Scheduling' : 'Continue';
+  }
+
+  if (currentStep === STEPS) {
+    footerEl.style.display = 'none';
+  }
+
+  // toggle listeners
+  if (currentStep === 2) {
+    const toggle = document.getElementById('reminderToggle');
+    if (toggle) toggle.addEventListener('click', () => {
+      reminderOn = !reminderOn;
+      toggle.classList.toggle('on', reminderOn);
+    });
+    toggle && toggle.classList.toggle('on', reminderOn);
+  }
+}
+
+function renderStep1() {
+  return `
+  <div class="form-group">
+    <label class="form-label">Piano type</label>
+    <select class="form-select" id="pianoType">
+      <option value="">Select type…</option>
+      <option value="upright">Upright / Vertical</option>
+      <option value="grand">Grand</option>
+      <option value="baby_grand">Baby Grand</option>
+      <option value="digital_hybrid">Digital / Hybrid</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">Brand / Make</label>
+      <input class="form-input" id="pianoBrand" type="text" placeholder="e.g. Yamaha, Steinway…" value="${formData.pianoBrand||''}">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Approximate age</label>
+      <select class="form-select" id="pianoAge">
+        <option value="">Select…</option>
+        <option value="under5">Under 5 years</option>
+        <option value="5to15">5–15 years</option>
+        <option value="15to30">15–30 years</option>
+        <option value="30to60">30–60 years</option>
+        <option value="over60">60+ years</option>
+        <option value="unknown">Unknown</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Last tuned</label>
+    <select class="form-select" id="lastTuned">
+      <option value="">Select…</option>
+      <option value="under6m">Within 6 months</option>
+      <option value="6to12m">6–12 months ago</option>
+      <option value="1to3y">1–3 years ago</option>
+      <option value="over3y">More than 3 years ago</option>
+      <option value="never">Never / Unknown</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Services needed <span style="font-weight:300;color:var(--gray-400)">(check all that apply)</span></label>
+    <div class="checkbox-group">
+      <div class="checkbox-option"><input type="checkbox" id="svc_tune" value="tuning"><label for="svc_tune">Tuning</label></div>
+      <div class="checkbox-option"><input type="checkbox" id="svc_pitch" value="pitch_raise"><label for="svc_pitch">Pitch raise (piano significantly out of tune)</label></div>
+      <div class="checkbox-option"><input type="checkbox" id="svc_repair" value="repair"><label for="svc_repair">Repair (sticky keys, broken string, pedal issue, etc.)</label></div>
+      <div class="checkbox-option"><input type="checkbox" id="svc_voice" value="voicing"><label for="svc_voice">Voicing / tone adjustment</label></div>
+      <div class="checkbox-option"><input type="checkbox" id="svc_inspect" value="inspection"><label for="svc_inspect">Inspection / appraisal report</label></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Additional notes <span style="font-weight:300;color:var(--gray-400)">(optional)</span></label>
+    <textarea class="form-textarea" id="pianoNotes" placeholder="Anything else I should know — specific problems, performance deadlines, access details…">${formData.pianoNotes||''}</textarea>
+  </div>`;
+}
+
+function renderStep2() {
+  return `
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">First name</label>
+      <input class="form-input" id="firstName" type="text" placeholder="Jane" value="${formData.firstName||''}">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Last name</label>
+      <input class="form-input" id="lastName" type="text" placeholder="Smith" value="${formData.lastName||''}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Email address</label>
+    <input class="form-input" id="email" type="email" placeholder="jane@example.com" value="${formData.email||''}">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Phone <span style="font-weight:300;color:var(--gray-400)">(optional)</span></label>
+    <input class="form-input" id="phone" type="tel" placeholder="(970) 555-…" value="${formData.phone||''}">
+  </div>
+  <div class="form-group">
+    <label class="form-label">Service address</label>
+    <input class="form-input" id="address" type="text" placeholder="Street address, Fort Collins CO" value="${formData.address||''}">
+  </div>
+  <div class="form-group">
+    <label class="form-label">How did you hear about Luke Fox?</label>
+    <select class="form-select" id="referral">
+      <option value="">Select…</option>
+      <option value="google">Google search</option>
+      <option value="friend">Friend / word of mouth</option>
+      <option value="nextdoor">Nextdoor</option>
+      <option value="yelp">Yelp</option>
+      <option value="facebook">Facebook</option>
+      <option value="returning">Returning customer</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <div class="reminder-card">
+    <div class="reminder-icon">📅</div>
+    <h3>6-Month Tuning Reminder</h3>
+    <p>Pianos stay in best condition when tuned twice a year. I'll send you a friendly email reminder in 6 months so you never miss a service.</p>
+    <div class="reminder-toggle">
+      <span class="toggle-label">Yes, send me a reminder</span>
+      <div class="toggle-switch on" id="reminderToggle"><div class="toggle-knob"></div></div>
+    </div>
+  </div>`;
+}
+
+function renderStep3() {
+  const name = (formData.firstName||'') + ' ' + (formData.lastName||'');
+  const services = formData.services && formData.services.length ? formData.services.join(', ') : 'Tuning';
+  // Build Calendly URL — replace with real Calendly username
+  const calendlyBase = 'https://calendly.com/lukefoxpiano';
+  const params = new URLSearchParams({
+    name: name.trim(),
+    email: formData.email||'',
+    a1: services,
+  });
+  const calendlyURL = `${calendlyBase}?${params.toString()}`;
+
+  return `
+  <div class="calendly-container">
+    <div class="calendly-placeholder">
+      <p><strong>Your piano survey is complete.</strong><br>Click below to open the scheduling calendar and pick a time that works for you.</p>
+      <p style="margin-top:1rem;font-size:0.85rem;color:var(--gray-400)">Your details will be pre-filled where possible.</p>
+      <a class="calendly-link" href="${calendlyURL}" target="_blank" rel="noopener">Open Scheduling Calendar →</a>
+    </div>
+    <div style="margin-top:1.5rem;padding:1.25rem;border:1px solid var(--gray-200)">
+      <p style="font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:0.75rem">Booking summary</p>
+      <div class="confirm-row"><span>Name</span><span>${name.trim() || '—'}</span></div>
+      <div class="confirm-row"><span>Email</span><span>${formData.email||'—'}</span></div>
+      <div class="confirm-row"><span>Piano</span><span>${[formData.pianoBrand, formData.pianoType].filter(Boolean).join(' ') || '—'}</span></div>
+      <div class="confirm-row"><span>Services</span><span>${services}</span></div>
+      <div class="confirm-row"><span>6-mo reminder</span><span>${reminderOn ? '✓ Yes' : 'No'}</span></div>
+    </div>
+    <p style="font-size:0.8rem;font-weight:300;color:var(--gray-400);margin-top:1rem;line-height:1.6">
+      After booking via Calendly you'll receive a confirmation email. ${reminderOn ? 'A 6-month reminder will be sent to ' + (formData.email||'your email address') + '.' : ''}
+    </p>
+  </div>`;
+}
+
+function validateStep1() {
+  const type = document.getElementById('pianoType').value;
+  const lastTuned = document.getElementById('lastTuned').value;
+  const services = [...document.querySelectorAll('.checkbox-group input:checked')].map(el => el.value);
+
+  if (!type) { alert('Please select a piano type.'); return false; }
+  if (!lastTuned) { alert('Please indicate when the piano was last tuned.'); return false; }
+  if (services.length === 0) { alert('Please select at least one service.'); return false; }
+
+  formData.pianoType = document.getElementById('pianoType').value;
+  formData.pianoBrand = document.getElementById('pianoBrand').value.trim();
+  formData.pianoAge = document.getElementById('pianoAge').value;
+  formData.lastTuned = lastTuned;
+  formData.services = services;
+  formData.pianoNotes = document.getElementById('pianoNotes').value.trim();
+  return true;
+}
+
+function validateStep2() {
+  const first = document.getElementById('firstName').value.trim();
+  const last = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const address = document.getElementById('address').value.trim();
+
+  if (!first || !last) { alert('Please enter your full name.'); return false; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return false; }
+  if (!address) { alert('Please enter a service address.'); return false; }
+
+  formData.firstName = first;
+  formData.lastName = last;
+  formData.email = email;
+  formData.phone = document.getElementById('phone').value.trim();
+  formData.address = address;
+  formData.referral = document.getElementById('referral').value;
+  formData.reminder = reminderOn;
+  return true;
+}
+
+function nextStep() {
+  let valid = false;
+  if (currentStep === 1) valid = validateStep1();
+  if (currentStep === 2) valid = validateStep2();
+
+  if (valid || currentStep >= STEPS - 1) {
+    if (valid) {
+      currentStep++;
+      renderStep();
+      document.getElementById('modal').scrollTop = 0;
+    }
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    renderStep();
+    document.getElementById('modal').scrollTop = 0;
+  }
+}
+
+// Close on ESC
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
