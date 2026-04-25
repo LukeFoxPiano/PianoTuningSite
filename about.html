@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Luke Fox is a professional piano technician serving Northern Colorado. Learn about his training, philosophy, and approach to piano care.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Luke Fox",
+  "jobTitle": "Piano Technician",
+  "url": "https://www.lukefox.dev/about.html",
+  "telephone": "+15104785493",
+  "email": "luke@lukefox.dev",
+  "worksFor": {
+    "@type": "LocalBusiness",
+    "name": "Luke Fox Piano Tuning & Repair",
+    "url": "https://www.lukefox.dev"
+  },
+  "areaServed": "Northern Colorado"
+}
+</script>
+<title>🎹 About — Luke Fox Piano Tuning & Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0e0e0e; --white: #fafaf8; --gray-50: #f5f4f0;
+    --gray-200: #e0ddd6; --gray-400: #a09d96; --gray-600: #6b6860;
+    --accent: #2a4a3e; --accent-light: #e8eeec;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --max: 1100px; --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); }
+  .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--black); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { font-size: 0.875rem; font-weight: 300; color: var(--gray-600); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+  .nav-cta { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid var(--black); color: var(--black); text-decoration: none; background: transparent; transition: background 0.2s var(--ease), color 0.2s; }
+  .nav-cta:hover { background: var(--black); color: var(--white); }
+
+  /* PAGE HERO */
+  .page-hero { padding: 10rem 2.5rem 5rem; background: var(--gray-50); border-bottom: 1px solid var(--gray-200); }
+  .page-hero-inner { max-width: var(--max); margin: 0 auto; }
+  .page-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+  .page-hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.1; color: var(--black); }
+  .page-hero h1 em { font-style: italic; color: var(--accent); }
+  .page-hero-desc { font-size: 1.125rem; font-weight: 300; color: var(--gray-600); max-width: 52ch; line-height: 1.75; margin-top: 1.5rem; }
+
+  /* CONTENT */
+  .content-section { padding: 5rem 2.5rem; }
+  .content-section:nth-child(even) { background: var(--gray-50); }
+  .container { max-width: var(--max); margin: 0 auto; }
+  .section-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 300; line-height: 1.2; color: var(--black); margin-bottom: 2rem; }
+  .section-title em { font-style: italic; }
+
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  @media (max-width: 760px) { .two-col { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  /* PROSE */
+  .prose p { font-size: 1rem; font-weight: 300; color: var(--gray-600); line-height: 1.85; margin-bottom: 1.25rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { font-weight: 500; color: var(--black); }
+
+  /* PHILOSOPHY CARDS */
+  .phil-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 3rem; background: var(--gray-200); }
+  .phil-card { background: var(--white); padding: 2rem; }
+  .phil-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+  .phil-title { font-family: var(--serif); font-size: 1.125rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .phil-desc { font-size: 0.9rem; font-weight: 300; color: var(--gray-600); line-height: 1.7; }
+
+  /* SERVICE AREA */
+  .area-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0; margin-top: 2rem; border: 1px solid var(--gray-200); }
+  .area-item { padding: 1rem 1.25rem; border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); font-size: 0.9375rem; font-weight: 300; color: var(--gray-600); }
+  .area-item strong { display: block; font-weight: 500; color: var(--black); font-size: 0.9375rem; }
+
+  /* CREDENTIAL STRIP */
+  .cred-strip { margin-top: 2.5rem; padding: 1.75rem; background: var(--accent-light); border: 1px solid var(--gray-200); }
+  .cred-strip p { font-size: 0.9375rem; font-weight: 300; color: var(--gray-600); line-height: 1.75; }
+  .cred-strip strong { font-weight: 500; color: var(--accent); }
+
+  /* CTA BAND */
+  .cta-band { background: var(--black); color: var(--white); padding: 5rem 2.5rem; text-align: center; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; }
+  .cta-band p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; }
+  .btn-white { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--white); color: var(--black); text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-white:hover { background: var(--accent-light); }
+
+  /* FOOTER */
+  footer { padding: 2.5rem 2.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--black); text-decoration: none; }
+  .footer-copy { font-size: 0.8125rem; color: var(--gray-400); font-weight: 300; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.8125rem; color: var(--gray-400); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--black); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Luke Fox 🎹</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+    <a class="nav-cta" href="https://calendly.com/luke-lukefox/tuning" target="_blank" rel="noopener">Book Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">About Luke Fox</p>
+    <h1>A Technician Who <em>Listens</em></h1>
+    <p class="page-hero-desc">Piano tuning is part science, part ear training, and part relationship with an instrument. I take all three seriously.</p>
+  </div>
+</div>
+
+<!-- WHO I AM -->
+<div class="content-section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="section-label">Background</p>
+        <h2 class="section-title">Who I <em>Am</em></h2>
+        <div class="prose">
+          <p>I'm Luke Fox, a piano technician based in Dacono, Colorado, serving homes, studios, churches, and schools throughout Northern Colorado. I've been working on pianos for years — drawn to the craft by a fascination with acoustic instruments and a belief that a well-maintained piano is a joy to play and a poorly maintained one is a genuine obstacle.</p>
+          <p>I came to piano technology through music. Playing the piano first gave me an intimate understanding of what pianists actually need from their instrument: consistent touch, clear tone, and reliable response across the full range of the keyboard. That perspective informs everything I do on a service call.</p>
+          <p>I work on all types of acoustic pianos — uprights, studio verticals, baby grands, and concert grands — from everyday home instruments to performance pianos that need to be ready for an audience.</p>
+        </div>
+        <div class="cred-strip">
+          <p><strong>Registered Piano Technician (RPT)</strong> — member of the Piano Technicians Guild. RPT certification requires passing three rigorous exams covering tuning accuracy, technical knowledge, and regulation skills.</p>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">My Approach</p>
+        <h2 class="section-title">How I <em>Work</em></h2>
+        <div class="prose">
+          <p>Every service call starts with a conversation. Before I open the lid, I want to know how the piano is used, what concerns the owner has, and what the instrument means to the household. That context shapes every decision I make.</p>
+          <p>I use both electronic tuning devices and aural tuning techniques, cross-checking one against the other. Electronic tools give precision; trained ears catch things that meters miss — the subtle beating between strings, the way a note sustains, the way harmonics stack in a chord. Together they produce a result that is both accurate and musical.</p>
+          <p>I believe in transparency. After every appointment I'll give you a plain-language summary of your piano's condition — what I found, what I did, and what to watch for over the coming months. No jargon, no upselling, just an honest assessment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="content-section">
+  <div class="container">
+    <p class="section-label">Philosophy</p>
+    <h2 class="section-title">What I <em>Believe</em> About Piano Care</h2>
+    <div class="phil-grid">
+      <div class="phil-card">
+        <div class="phil-icon">🎵</div>
+        <div class="phil-title">Tuning is seasonal</div>
+        <p class="phil-desc">Colorado's dry climate and dramatic temperature swings affect piano pitch more than most states. Twice-yearly tuning isn't a sales pitch — it's the physics of wood and wire responding to their environment.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">🔧</div>
+        <div class="phil-title">Regulation is underrated</div>
+        <p class="phil-desc">Most pianists assume their instrument is as responsive as it should be. Proper regulation — adjusting the mechanical action — can transform a sluggish, uneven keyboard into one that responds to the lightest touch.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">👂</div>
+        <div class="phil-title">Voicing shapes character</div>
+        <p class="phil-desc">Tone is not fixed. Hammer voicing can move a piano from harsh and bright to warm and mellow, or anywhere in between. Every room and every player deserves a piano voiced for them.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">📋</div>
+        <div class="phil-title">Honest assessments only</div>
+        <p class="phil-desc">I will tell you when a repair isn't worth the cost, when a piano is beyond economical restoration, and when you should simply keep playing and not worry. My job is to give you information, not create work.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE AREA -->
+<div class="content-section">
+  <div class="container">
+    <p class="section-label">Where I Work</p>
+    <h2 class="section-title">Service <em>Area</em></h2>
+    <div class="prose" style="max-width: 60ch;">
+      <p>I'm based in Dacono and travel throughout the Northern Colorado Front Range. If your city isn't listed below, reach out — I'm often willing to travel further for larger jobs or multiple pianos at one location.</p>
+    </div>
+    <div class="area-list">
+      <div class="area-item"><strong>Dacono</strong>Home base</div>
+      <div class="area-item"><strong>Longmont</strong>Regular visits</div>
+      <div class="area-item"><strong>Boulder</strong>Regular visits</div>
+      <div class="area-item"><strong>Erie</strong>Regular visits</div>
+      <div class="area-item"><strong>Fort Collins</strong>Regular visits</div>
+      <div class="area-item"><strong>Loveland</strong>Regular visits</div>
+      <div class="area-item"><strong>Greeley</strong>Regular visits</div>
+      <div class="area-item"><strong>Firestone</strong>Regular visits</div>
+      <div class="area-item"><strong>Frederick</strong>Regular visits</div>
+      <div class="area-item"><strong>Berthoud</strong>Regular visits</div>
+      <div class="area-item"><strong>Windsor</strong>Regular visits</div>
+      <div class="area-item"><strong>Denver</strong>By request</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2>Let's talk about your piano.</h2>
+  <p>Book a tuning or get in touch with a question.</p>
+  <a class="btn-white" href="https://calendly.com/luke-lukefox/tuning" target="_blank" rel="noopener">Book an Appointment</a>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html">Luke Fox Piano Tuning & Repair</a>
+  <div class="footer-copy">© 2026 Luke Fox. Dacono, Colorado.</div>
+  <div class="footer-links">
+    <a href="mailto:luke@lukefox.dev">luke@lukefox.dev</a>
+    <a href="tel:+15104785493">(510) 478-5493</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -6,118 +6,65 @@
 <meta name="description" content="Piano tuning and repair in Northern Colorado. Serving Longmont, Boulder, Erie, and surrounding areas. Book online with Luke Fox.">
 <script type="application/ld+json">
 {
-	"@context": "https://schema.org",
-	"@type": "LocalBusiness",
-	"name": "Luke Fox Piano Tuning & Repair",
-	"priceRange": "$75-600",
-	"telephone": "+15104785493",
-	"url": "https://www.lukefox.dev",
-	"address": {
-		"@type": "PostalAddress",
-		"streetAddress": "",
-		"addressLocality": "Dacono",
-		"addressRegion": "CO",
-		"addressCountry": "US"
-	},
-	"openingHoursSpecification": [
-		{
-			"@type": "OpeningHoursSpecification",
-			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-			"opens": "07:00",
-			"closes": "17:00"
-		}
-	]
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Luke Fox Piano Tuning & Repair",
+  "priceRange": "$75-600",
+  "telephone": "+15104785493",
+  "url": "https://www.lukefox.dev",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dacono",
+    "addressRegion": "CO",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "17:00"
+    }
+  ]
 }
 </script>
-<title>Luke Fox Piano Tuning & Repair</title>
+<title>🎹 Luke Fox Piano Tuning & Repair</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --black: #0e0e0e;
-    --white: #fafaf8;
-    --gray-50: #f5f4f0;
-    --gray-200: #e0ddd6;
-    --gray-400: #a09d96;
-    --gray-600: #6b6860;
-    --accent: #2a4a3e;
-    --accent-light: #e8eeec;
+    --black: #0e0e0e; --white: #fafaf8; --gray-50: #f5f4f0;
+    --gray-200: #e0ddd6; --gray-400: #a09d96; --gray-600: #6b6860;
+    --accent: #2a4a3e; --accent-light: #e8eeec;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
-    --max: 1100px;
-    --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --max: 1100px; --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--white);
-    color: var(--black);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  body { font-family: var(--sans); background: var(--white); color: var(--black); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
   /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 2.5rem;
-    background: rgba(250,250,248,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--gray-200);
-  }
-  .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; letter-spacing: 0.01em; color: var(--black); text-decoration: none; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); }
+  .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; color: var(--black); text-decoration: none; }
   .nav-links { display: flex; gap: 2rem; align-items: center; }
   .nav-links a { font-size: 0.875rem; font-weight: 300; color: var(--gray-600); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--black); }
-  .nav-cta {
-    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 0.6rem 1.4rem; border: 1px solid var(--black);
-    color: var(--black); text-decoration: none; background: transparent;
-    transition: background 0.2s var(--ease), color 0.2s;
-  }
+  .nav-links a:hover, .nav-links a.active { color: var(--black); }
+  .nav-cta { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.4rem; border: 1px solid var(--black); color: var(--black); text-decoration: none; background: transparent; transition: background 0.2s var(--ease), color 0.2s; }
   .nav-cta:hover { background: var(--black); color: var(--white); }
 
   /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 8rem 2.5rem 5rem;
-    background: var(--white);
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; top: 0; right: 0; width: 55%; height: 100%;
-    background: var(--gray-50);
-    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
-    z-index: 0;
-  }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem 5rem; background: var(--white); position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; top: 0; right: 0; width: 55%; height: 100%; background: var(--gray-50); clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%); z-index: 0; }
   .hero-content { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; width: 100%; }
   .hero-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; }
-  .hero h1 {
-    font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300;
-    line-height: 1.05; letter-spacing: -0.01em; color: var(--black);
-    max-width: 10ch; margin-bottom: 2rem;
-  }
+  .hero h1 { font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--black); max-width: 10ch; margin-bottom: 2rem; }
   .hero h1 em { font-style: italic; color: var(--accent); }
   .hero-desc { font-size: 1.0625rem; font-weight: 300; color: var(--gray-600); max-width: 42ch; line-height: 1.75; margin-bottom: 3rem; }
   .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  .btn-primary {
-    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 1rem 2.25rem; background: var(--black); color: var(--white);
-    border: 1px solid var(--black); text-decoration: none; display: inline-block;
-    transition: background 0.2s, color 0.2s;
-  }
+  .btn-primary { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 2.25rem; background: var(--black); color: var(--white); border: 1px solid var(--black); text-decoration: none; display: inline-block; transition: background 0.2s, color 0.2s; }
   .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-  .btn-ghost {
-    font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.04em;
-    color: var(--gray-600); text-decoration: none;
-    display: flex; align-items: center; gap: 0.4rem;
-    transition: color 0.2s;
-  }
+  .btn-ghost { font-size: 0.8125rem; font-weight: 400; color: var(--gray-600); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
   .btn-ghost:hover { color: var(--black); }
 
   /* SECTIONS */
@@ -148,17 +95,12 @@
   .cta-band { background: var(--black); color: var(--white); padding: 5rem 2.5rem; text-align: center; }
   .cta-band h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; font-style: italic; margin-bottom: 1.5rem; }
   .cta-band p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; }
-  .btn-white {
-    font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 1rem 2.5rem; background: var(--white); color: var(--black);
-    text-decoration: none; display: inline-block;
-    transition: background 0.2s;
-  }
+  .btn-white { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--white); color: var(--black); text-decoration: none; display: inline-block; transition: background 0.2s; }
   .btn-white:hover { background: var(--accent-light); }
 
   /* FOOTER */
-  footer { padding: 3rem 2.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--black); }
+  footer { padding: 2.5rem 2.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--black); text-decoration: none; }
   .footer-copy { font-size: 0.8125rem; color: var(--gray-400); font-weight: 300; }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { font-size: 0.8125rem; color: var(--gray-400); text-decoration: none; font-weight: 300; transition: color 0.2s; }
@@ -168,10 +110,11 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">Luke Fox 🎹</a>
+  <a class="nav-logo" href="index.html">Luke Fox 🎹</a>
   <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
     <a class="nav-cta" href="https://calendly.com/luke-lukefox/tuning" target="_blank" rel="noopener">Book Now</a>
   </div>
 </nav>
@@ -274,7 +217,7 @@
 </div>
 
 <footer>
-  <div class="footer-logo">Luke Fox Piano Tuning & Repair</div>
+  <a class="footer-logo" href="index.html">Luke Fox Piano Tuning & Repair</a>
   <div class="footer-copy">© 2026 Luke Fox. Dacono, Colorado.</div>
   <div class="footer-links">
     <a href="mailto:luke@lukefox.dev">luke@lukefox.dev</a>
